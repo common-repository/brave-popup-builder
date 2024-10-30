@@ -1,0 +1,39 @@
+{
+	"landingPage": "/wp-admin/admin.php?page=bravepop",
+	"preferredVersions": {
+		"php": "8.0",
+		"wp": "latest"
+	},
+	"phpExtensionBundles": [ "kitchen-sink" ],
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginZipFile": {
+				"resource": "url",
+				"url": "https://downloads.wordpress.org/plugin/brave-popup-builder.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "login",
+			"username": "admin",
+			"password": "password"
+		},
+		{
+    	"step": "setSiteOptions",
+    	"options": {
+    		"blogname": "Brave Demo",
+    		"permalink_structure": "/%postname%/"
+    	}
+    },
+    {
+      "step" : "runPHP",
+      "code": "<?php require_once 'wordpress/wp-load.php'; $popupData = '{ \"uid\": \"-O7HokvjZ8cEuY9CsJB_\", \"itemType\": \"popup\", \"settings\": { \"goal\": \"newsletter\", \"goalAction\": { \"step\": 0, \"type\": \"step\" }, \"audience\": {}, \"frequency\": {}, \"placement\": {}, \"trigger\": {} }, \"steps\": [ { \"desktop\": { \"width\": 700, \"height\": 450, \"content\": [ { \"id\": \"-Lsh1xb8BHqCbY6KpCI1\", \"type\": \"image\", \"aspectRatio\": false, \"width\": 316, \"height\": 466, \"image\": \"https://bravepresetcontent.b-cdn.net/52e2d04b4857af14f6da8c7dda793179113ac3e45656734d7c277fd09f_640.jpg\", \"action\": { \"type\": \"none\" }, \"left\": -12, \"top\": -4 }, { \"id\": \"-LsjBsYp2NGdwrLdqfYp\", \"type\": \"text\", \"content\": \"Hello there\", \"fontFamily\": \"Abril Fatface\", \"fontSize\": 34, \"fontColor\": { \"hex\": \"#000000\", \"rgb\": \"0,0,0\" }, \"fontBold\": false, \"left\": 352, \"top\": 90, \"width\": 244, \"height\": 67 }, { \"id\": \"-LsjByra1OaE4qxKjAXK\", \"type\": \"text\", \"content\": \"Leverage agile frameworks to provide a robust synopsis for high level overviews. \", \"fontFamily\": \"None\", \"fontSize\": 13, \"fontColor\": { \"hex\": \"#8a8a8a\", \"rgb\": \"138,138,138\" }, \"fontBold\": false, \"left\": 351, \"top\": 157, \"width\": 281, \"height\": 67 }, { \"id\": \"-LsjC3MBfrxhnaMdzYXL\", \"type\": \"form\", \"width\": 316, \"height\": 150, \"formData\": { \"fields\": [ { \"id\": \"-Lsj5vCwzTSOsE5P1y9Z\", \"type\": \"input\", \"required\": true, \"label\": \"\", \"placeholder\": \"Email Address\", \"secondLabel\": \"\", \"secondPlaceholder\": \"\", \"validation\": \"email\", \"width\": \"full\" } ], \"settings\": { \"style\": { \"style\": \"style1\", \"spacing\": 15, \"borderRadius\": \"4\", \"fontColor\": { \"hex\": \"#000000\", \"rgb\": \"0,0,0\" }, \"inline\": false, \"innerSpacing\": \"18\" }, \"button\": { \"fullwidth\": false, \"align\": \"left\", \"borderRadius\": 4, \"buttonText\": \"Subscribe\", \"icon\": { \"body\": \"<path d=\\\"M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z\\\" fill=\\\"currentColor\\\"/>\", \"name\": \"paper-plane\", \"width\": 512, \"height\": 512, \"palette\": false, \"iconSetName\": \"Font Awesome 5 Solid\" }, \"iconColor\": { \"hex\": \"#ffffff\", \"rgb\": \"255,255,255\" }, \"fontSize\": 13, \"fontColor\": { \"hex\": \"#ffffff\", \"rgb\": \"255,255,255\" }, \"bgColor\": { \"hex\": \"#e65b6b\", \"rgb\": \"230,91,107\" }, \"hoverAnimation\": \"none\" }, \"action\": { \"primaryAction\": \"content\", \"primaryActionData\": { \"content\": \"Thank You For your Submission\", \"popup\": \"\", \"redirect\": \"\", \"redirectAfter\": 6, \"redirectMessage\": \"Thank You For your Submission. Your Now Being Redirected...\" }, \"recieveEmail\": { \"enable\": true, \"emails\": \"your@email.com\", \"subject\": \"Someone Sent You a Message\", \"custom\": false }, \"sendEmail\": { \"enable\": false, \"subject\": \"Thank You For your Submission\", \"message\": \"Thank You For your Submission. We Will get back to you as early as possible.\" } } } }, \"left\": 341, \"top\": 224 } ] }, \"mobile\": { \"width\": 320, \"height\": 480, \"content\": [] } } ] }'; $id = wp_insert_post( array('post_title' => 'Newsletter Popup' ,'post_type' => 'popup', 'post_status' => 'draft') ); update_post_meta($id, 'popup_data',wp_slash($popupData)); update_post_meta($id, 'popup_type','popup'); update_post_meta($id, 'popup_placement','sitewide'); update_post_meta($id, 'popup_devices', 'all'); ?>"
+    }
+	]
+}
